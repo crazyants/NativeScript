@@ -49,16 +49,23 @@ export function pageLoaded() {
     console.log(str);
     console.log(obj);
 
-    console.log('number: %i', num);
-    console.log('string: %s', str);
-    console.log("%s %f", str, num);
+    console.log(num, str, obj);
+    console.log([1, 5, 12.5, obj, str, 42]);
+
+    console.log(`number: ${num}`);
+    console.log(`string: ${str}`);
+    console.log(`${str} ${num}`);
 
     console.info("info");
     console.warn("warn");
     console.error("error");
 
-    console.assert(false, "%d not equals %d", 0, 1);
+    console.assert(false, `false == true`);
     console.assert(true, "1 equals 1");
+
+    console.assert("", "empty string evalutes to 'false'");
+
+    console.trace("console.trace() called");
 
     if (app.android) {
         console.dir(true);
@@ -71,7 +78,7 @@ export function pageLoaded() {
 
         console.dir(obj);
         console.dir(foo);
-        console.log("%j", button);
+        console.log(`${button}`);
     }
 
     console.trace();

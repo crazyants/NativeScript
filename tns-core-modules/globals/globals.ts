@@ -154,7 +154,6 @@ export function install() {
             var dialogs: typeof dialogsModule = require("ui/dialogs");
             var xhr = require("xhr");
             var fetch = require("fetch");
-            var consoleModule = require("console");
 
             snapshotGlobals = snapshotGlobals || {
                 setTimeout: timer.setTimeout,
@@ -175,8 +174,6 @@ export function install() {
                 Headers: fetch.Headers,
                 Request: fetch.Request,
                 Response: fetch.Response,
-
-                console: new consoleModule.Console()
             }
         }
         Object.assign(global, snapshotGlobals);
@@ -199,15 +196,6 @@ export function install() {
         registerOnGlobalContext("Headers", "fetch");
         registerOnGlobalContext("Request", "fetch");
         registerOnGlobalContext("Response", "fetch");
-
-        // check whether the 'android' namespace is exposed
-        // if positive - the current device is an Android 
-        // so a custom implementation of the global 'console' object is attached.
-        // otherwise do nothing on iOS - the NS runtime provides a native 'console' functionality.
-        if ((<any>global).android) {
-            const consoleModule = require("console");
-            (<any>global).console = new consoleModule.Console();
-        }
     }
 }
 install();
