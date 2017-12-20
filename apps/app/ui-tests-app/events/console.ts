@@ -34,11 +34,6 @@ export function pageLoaded() {
     var str = "text";
     var obj = { name: "John", age: 34 };
     var button = new buttonModule.Button();
-    function Foo() {
-        this.abc = "Hello";
-        this.circular = this;
-    }
-    var foo = new Foo();
 
     console.log(true);
     console.log(false);
@@ -48,9 +43,6 @@ export function pageLoaded() {
     console.log(num);
     console.log(str);
     console.log(obj);
-
-    console.log(num, str, obj);
-    console.log([1, 5, 12.5, obj, str, 42]);
 
     console.log(`number: ${num}`);
     console.log(`string: ${str}`);
@@ -77,8 +69,10 @@ export function pageLoaded() {
         console.dir(str);
 
         console.dir(obj);
-        console.dir(foo);
         console.log(`${button}`);
+
+        console.log(num, str, obj);
+        console.log([1, 5, 12.5, obj, str, 42]);
     }
 
     console.trace();
